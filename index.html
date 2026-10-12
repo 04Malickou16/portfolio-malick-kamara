@@ -59,7 +59,7 @@
       <h2 class="section-title"><span class="num">01</span> Profil</h2>
       <div class="about-grid">
         <div class="about-photo">
-          <img src="photo-profil.png" alt="Malick Kamara" class="photo">
+          <img src="photo-profil.jpg" alt="Malick Kamara" class="photo">
         </div>
         <div class="about-text">
           <p>
@@ -150,9 +150,10 @@
 
       <h3 class="subheading">Tableau de couverture des compétences</h3>
       <p class="section-intro">
-        À compléter au fur et à mesure que des fiches sont ajoutées dans la section
+        Ce tableau se complète au fur et à mesure que des fiches sont ajoutées dans la section
         <a href="#realisations">Réalisations</a>. Une compétence n'est cochée que si le travail
-        réellement effectué le justifie.
+        réellement effectué le justifie. La compétence C3, qui concerne la présence en ligne de
+        l'organisation, n'est pas encore couverte.
       </p>
       <div class="table-wrap">
         <table class="cov-table">
@@ -161,8 +162,10 @@
           </thead>
           <tbody>
             <tr><td>Réalisation 1 — Mise en place d'un serveur web</td><td>☑</td><td>☐</td><td>☐</td><td>☑</td><td>☐</td><td>☐</td></tr>
-            <tr><td>Réalisation 2 — à compléter</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr>
-            <tr><td>Réalisation 3 — à compléter</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td></tr>
+            <tr><td>Réalisation 2 — Déploiement d'un domaine Active Directory</td><td>☑</td><td>☑</td><td>☐</td><td>☑</td><td>☑</td><td>☐</td></tr>
+            <tr><td>Réalisation 3 — Déploiement d'un réseau Cisco multi-sites</td><td>☑</td><td>☐</td><td>☐</td><td>☑</td><td>☑</td><td>☐</td></tr>
+            <tr><td>Stage — pfSense, Active Directory et supervision Zabbix</td><td>☑</td><td>☑</td><td>☐</td><td>☑</td><td>☑</td><td>☐</td></tr>
+            <tr><td>Veille technologique — 2 fiches</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>☑</td></tr>
           </tbody>
         </table>
       </div>
@@ -260,6 +263,57 @@
           <div class="fiche-row"><dt>Bilan</dt><dd>J'ai appris à mettre en place un serveur web sur une VM, et qu'il faut parfois repartir du début pour résoudre un problème rencontré. Je réaliserai une documentation plus adaptée : plus claire, avec plus de précision et davantage de tickets ou d'étapes.</dd></div>
         </dl>
       </div>
+
+      <div class="fiche-card">
+        <h4>Fiche de réalisation n°2 — <em>Déploiement d'un domaine Active Directory</em></h4>
+        <dl class="fiche-fields">
+          <div class="fiche-row"><dt>Date / période</dt><dd class="todo">À compléter</dd></div>
+          <div class="fiche-row"><dt>Contexte de l'organisation</dt><dd>Mise en situation professionnelle : technicien systèmes au sein de l'ESN Mediasys Solutions. Le client, le Groupe Altéa, ouvre une nouvelle agence et demande une infrastructure fiable, sécurisée et évolutive. Intervention à distance sur un serveur vierge, avec des contraintes de temps et des demandes transmises sous forme de tickets.</dd></div>
+          <div class="fiche-row"><dt>Besoin / problématique</dt><dd>La nouvelle agence n'a aucune gestion centralisée : pas d'annuaire, pas de comptes utilisateurs, pas de droits différenciés sur les dossiers partagés et aucune politique de mot de passe. Chaque poste devrait être administré individuellement, ce qui n'est pas tenable à mesure que l'agence grandit.</dd></div>
+          <div class="fiche-row"><dt>Objectif</dt><dd>Mettre en service un contrôleur de domaine, structurer l'annuaire par service, sécuriser les ressources partagées et industrialiser la configuration des postes par stratégie de groupe.</dd></div>
+          <div class="fiche-row"><dt>Environnement technique</dt><dd>1 serveur Windows (contrôleur de domaine) · 1 poste client (simulation) · réseau local d'entreprise · nom de domaine : altea.local</dd></div>
+          <div class="fiche-row"><dt>Technologies / versions</dt><dd>Windows Server · rôle AD DS · service DNS · stratégies de groupe (GPO) · partages et permissions NTFS</dd></div>
+          <div class="fiche-row"><dt>Travail personnel réalisé</dt><dd>
+            <p>Traitement des cinq tickets par ordre de priorité :</p>
+            <ol class="ticket-list">
+              <li><strong>Ticket 1 — Mise en service (urgent)</strong><br>Installation du rôle AD DS, promotion du serveur en contrôleur de domaine, création du domaine altea.local et configuration du DNS.</li>
+              <li><strong>Ticket 2 — Organisation</strong><br>Création des unités d'organisation RH, IT et Commerce, puis des utilisateurs et des groupes correspondants.</li>
+              <li><strong>Ticket 3 — Incident sécurité</strong><br>Sécurisation d'un dossier partagé avec des droits différenciés attribués par groupe, et non par utilisateur.</li>
+              <li><strong>Ticket 4 — Politique entreprise</strong><br>Création d'une GPO imposant un mot de passe complexe et le verrouillage automatique de la session.</li>
+              <li><strong>Ticket 5 — Support utilisateur</strong><br>Mappage automatique d'un lecteur réseau pour le service commercial.</li>
+            </ol>
+          </dd></div>
+          <div class="fiche-row"><dt>Difficulté principale</dt><dd class="todo">À compléter : la difficulté réellement rencontrée pendant la mission</dd></div>
+          <div class="fiche-row"><dt>Diagnostic / raisonnement</dt><dd>Traitement des demandes dans l'ordre de priorité imposé par le client, en commençant par la mise en service, puisque aucun des autres tickets ne peut être traité sans contrôleur de domaine fonctionnel. Les droits sont ensuite attribués à des groupes plutôt qu'à des utilisateurs, afin que l'arrivée d'un nouveau salarié ne demande qu'un ajout au groupe.</dd></div>
+          <div class="fiche-row"><dt>Solution mise en œuvre</dt><dd>Un domaine unique altea.local, un annuaire structuré en unités d'organisation par service, des droits portés par les groupes, et une GPO appliquée au niveau du domaine pour la politique de mot de passe et le verrouillage de session.</dd></div>
+          <div class="fiche-row"><dt>Tests réalisés</dt><dd>Ouverture de session d'un compte du domaine depuis le poste client, résolution DNS du domaine, vérification des accès au dossier partagé avec un compte autorisé puis non autorisé, contrôle de l'application de la GPO et vérification de la présence du lecteur réseau mappé à l'ouverture de session.</dd></div>
+          <div class="fiche-row"><dt>Résultats obtenus</dt><dd>Domaine altea.local opérationnel, postes intégrés, droits différenciés effectifs et politique de sécurité appliquée automatiquement à l'ouverture de session.</dd></div>
+          <div class="fiche-row"><dt>Documentation produite</dt><dd class="todo">À compléter : procédure de déploiement à ajouter dans la section Documentation</dd></div>
+          <div class="fiche-row"><dt>Compétences mobilisées</dt><dd>C1 — Gérer le patrimoine informatique · C2 — Répondre aux incidents et aux demandes d'assistance · C4 — Travailler en mode projet · C5 — Mettre à disposition des utilisateurs un service informatique</dd></div>
+          <div class="fiche-row"><dt>Bilan</dt><dd class="todo">À compléter : ce que cette mission m'a appris, et ce que je ferais autrement</dd></div>
+        </dl>
+      </div>
+
+      <div class="fiche-card">
+        <h4>Fiche de réalisation n°3 — <em>Déploiement d'un réseau Cisco multi-sites</em></h4>
+        <dl class="fiche-fields">
+          <div class="fiche-row"><dt>Date / période</dt><dd class="todo">À compléter</dd></div>
+          <div class="fiche-row"><dt>Contexte de l'organisation</dt><dd>Mise en situation professionnelle : responsable réseau d'une ESN, en charge du réseau de l'entreprise Factory13.</dd></div>
+          <div class="fiche-row"><dt>Besoin / problématique</dt><dd>Les postes de travail PC0 à PC3 sont répartis sur quatre réseaux distincts et ne peuvent pas joindre les deux serveurs web. Il faut faire communiquer ces réseaux entre eux en respectant un plan d'adressage imposé, sans le modifier.</dd></div>
+          <div class="fiche-row"><dt>Objectif</dt><dd>Paramétrer le réseau pour que tous les postes atteignent les serveurs web, en respectant les adressages imposés des routeurs R1 et R2 et des deux serveurs, puis remettre les tables de routage de R1 et R2 selon le modèle fourni par le responsable hiérarchique.</dd></div>
+          <div class="fiche-row"><dt>Environnement technique</dt><dd>Réseau virtuel sous Cisco : 4 réseaux · 4 ordinateurs · 4 commutateurs · 2 serveurs · 2 routeurs (modèle « PT Router »)</dd></div>
+          <div class="fiche-row"><dt>Technologies / versions</dt><dd>Adressage IPv4 et sous-réseaux · commutation · routage entre réseaux · tables de routage</dd></div>
+          <div class="fiche-row"><dt>Travail personnel réalisé</dt><dd>Construction de la topologie, adressage des postes, des serveurs et des interfaces des routeurs conformément au plan imposé, configuration du routage entre R1 et R2, puis relevé et mise en forme des tables de routage des deux routeurs.</dd></div>
+          <div class="fiche-row"><dt>Difficulté principale</dt><dd class="todo">À compléter : la difficulté réellement rencontrée</dd></div>
+          <div class="fiche-row"><dt>Diagnostic / raisonnement</dt><dd>Le plan d'adressage étant imposé, l'adressage a été posé en premier, réseau par réseau, avant toute configuration de routage : une erreur de masque ou de passerelle se diagnostique bien plus facilement avant que le routage ne s'y ajoute. La connectivité a ensuite été vérifiée par paliers, d'abord à l'intérieur de chaque réseau, puis entre réseaux.</dd></div>
+          <div class="fiche-row"><dt>Solution mise en œuvre</dt><dd>Adressage conforme au plan fourni, passerelle par défaut déclarée sur chaque poste et chaque serveur, et routage configuré sur R1 et R2 pour rendre les quatre réseaux joignables entre eux.</dd></div>
+          <div class="fiche-row"><dt>Tests réalisés</dt><dd>Ping de chaque poste vers sa passerelle, puis vers les deux serveurs web, et lecture des tables de routage de R1 et R2 pour vérifier la présence des routes attendues vers l'ensemble des réseaux.</dd></div>
+          <div class="fiche-row"><dt>Résultats obtenus</dt><dd>Les quatre postes joignent les deux serveurs web. Les tables de routage de R1 et R2 ont été remises au format demandé.</dd></div>
+          <div class="fiche-row"><dt>Documentation produite</dt><dd>Tables de routage de R1 et R2, rédigées selon le modèle fourni.</dd></div>
+          <div class="fiche-row"><dt>Compétences mobilisées</dt><dd>C1 — Gérer le patrimoine informatique · C4 — Travailler en mode projet · C5 — Mettre à disposition des utilisateurs un service informatique</dd></div>
+          <div class="fiche-row"><dt>Bilan</dt><dd class="todo">À compléter : ce que cette mission m'a appris, et ce que je ferais autrement</dd></div>
+        </dl>
+      </div>
       <p class="fiche-note">D'autres fiches seront ajoutées au fil de l'année, pour chaque réalisation significative (TP, projet, intervention, stage).</p>
     </div>
   </section>
@@ -338,7 +392,48 @@
           <li><a href="https://www.boursorama.com/bourse/actualites/broadcom-interroge-par-l-ue-sur-les-modifications-apportees-aux-licences-de-vmware-33135cae919e52bdfc66f6b6a66ee775" target="_blank" rel="noopener">Boursorama / Reuters — Broadcom interrogé par l'UE sur les modifications apportées aux licences de VMware</a></li>
         </ul>
       </div>
-      <p class="fiche-note">Deux fiches de veille sont attendues par cycle (séance 7 du programme). D'autres seront ajoutées au fil de l'année.</p>
+
+      <div class="fiche-card">
+        <h4>Fiche de veille n°2 — <em>Fin du support de Windows 10 et migration du parc</em></h4>
+        <dl class="fiche-fields">
+          <div class="fiche-row"><dt>Thème</dt><dd>Fin du support de Windows 10, programme de mises à jour de sécurité étendues (ESU) et migration d'un parc vers Windows 11</dd></div>
+          <div class="fiche-row"><dt>Pourquoi ce sujet ?</dt><dd>C'est le sujet qui touche le plus directement le poste que je vise. Pendant mon stage en assistance et support informatique, les postes utilisateurs étaient sous Windows 10 et Windows 11. Un parc qui reste sur un système sans correctifs devient une surface d'attaque, et la décision de migrer ou de payer l'ESU se prend sur des éléments à la fois techniques, financiers et réglementaires. C'est typiquement ce qu'un technicien doit savoir expliquer à un client.</dd></div>
+          <div class="fiche-row"><dt>Source principale</dt><dd>Documentation officielle Microsoft (page de fin de support grand public et documentation Microsoft Learn sur le programme ESU), recoupée avec la presse technique francophone pour les chiffres de parts de marché.</dd></div>
+          <div class="fiche-row"><dt>Date de publication</dt><dd>Pages Microsoft mises à jour en continu · article de presse consulté pour les chiffres de février 2026</dd></div>
+          <div class="fiche-row"><dt>Résumé de l'information</dt><dd>
+            <p>Windows 10 n'est plus supporté depuis le <strong>14 octobre 2025</strong> : plus de correctifs de sécurité, plus de correctifs de fonctionnalité, plus d'assistance technique. Le système continue de démarrer, mais chaque faille publiée après cette date reste ouverte.
+              <span class="src-inline"><a href="https://www.microsoft.com/fr-fr/windows/end-of-support" target="_blank" rel="noopener">Microsoft — Fin du support</a></span>
+            </p>
+            <p>Microsoft propose un programme de mises à jour de sécurité étendues (ESU), qui ne livre que les correctifs de sécurité jugés critiques et importants. Il n'apporte ni nouvelles fonctionnalités, ni support technique en dehors de l'activation de la licence. Côté grand public, les mises à jour sont assurées jusqu'au <strong>12 octobre 2027</strong>, sur un appareil en version 22H2 à usage personnel, gratuitement en synchronisant ses paramètres, contre 1 000 points Microsoft Rewards ou pour 30 USD, avec une licence utilisable sur dix appareils.
+              <span class="src-inline"><a href="https://www.microsoft.com/fr-fr/windows/end-of-support" target="_blank" rel="noopener">Microsoft — Fin du support</a></span>
+            </p>
+            <p>Côté entreprise, l'ESU est un abonnement annuel qui a démarré en <strong>novembre 2025</strong> et peut couvrir <strong>trois ans au maximum</strong>. Il coûte <strong>61 USD par appareil la première année</strong> en licence en volume, et <strong>le tarif double chaque année</strong>, soit environ 122 puis 244 USD. Les années sont cumulatives : une entreprise qui attend la deuxième année devra aussi payer la première. Les machines virtuelles Windows 10 hébergées dans Windows 365 ou Azure Virtual Desktop en bénéficient sans surcoût.
+              <span class="src-inline"><a href="https://learn.microsoft.com/fr-fr/windows/whats-new/extended-security-updates" target="_blank" rel="noopener">Microsoft Learn — Programme ESU</a></span>
+            </p>
+            <p>Les applications Microsoft 365 installées sur Windows 10 continuent, elles, de recevoir des mises à jour de sécurité jusqu'au <strong>10 octobre 2028</strong>, ce qui ne protège en rien le système d'exploitation lui-même.
+              <span class="src-inline"><a href="https://www.microsoft.com/fr-fr/windows/end-of-support" target="_blank" rel="noopener">Microsoft — Fin du support</a></span>
+            </p>
+          </dd></div>
+          <div class="fiche-row"><dt>Vérification de l'information</dt><dd>Les chiffres de parts de marché relayés par la presse proviennent de StatCounter, qui mesure l'usage à travers un panel de sites web : Windows 11 passerait de 50,73 % en janvier 2026 à 62,41 % puis 72,57 % en février 2026, pendant que Windows 10 chuterait de 35,77 % à 26,45 % sur le seul mois de février. Ces sauts sont inhabituels et ne correspondent à aucun déclencheur identifié, ni promotion, ni vague de renouvellement de matériel. Le même institut avait déjà publié une hausse anormale de Windows 7 qu'il a corrigée plusieurs semaines plus tard. J'ai donc retenu l'ordre de grandeur, une majorité de postes désormais sous Windows 11, mais pas le chiffre précis, qui demande confirmation sur plusieurs relevés mensuels.
+            <span class="src-inline"><a href="https://www.clubic.com/actualite-602752-fin-de-support-de-windows-10-l-adoption-de-windows-11-s-emballe-et-passe-de-50-a-72-57-en-deux-mois.html" target="_blank" rel="noopener">Clubic — chiffres StatCounter et réserves sur la mesure</a></span>
+          </dd></div>
+          <div class="fiche-row"><dt>Avantages</dt><dd>Pour la migration vers Windows 11 : des postes de nouveau corrigés, un socle de sécurité matérielle imposé (démarrage sécurisé, TPM 2.0), et un parc homogène plus simple à administrer par GPO. Pour l'ESU : du temps acheté, sans toucher aux postes ni aux applications métier, ce qui permet d'étaler la dépense sur plusieurs exercices.</dd></div>
+          <div class="fiche-row"><dt>Limites / risques</dt><dd>L'ESU ne corrige que les failles critiques et importantes, ne couvre pas le support technique et coûte deux fois plus cher chaque année : c'est un sursis, pas une solution. À l'inverse, une partie du parc existant ne remplit pas les prérequis matériels de Windows 11 et demande un remplacement physique. Rester sur un système non supporté sans ESU expose à des failles définitivement non corrigées, et peut poser un problème de conformité, en particulier sur des données personnelles.</dd></div>
+          <div class="fiche-row"><dt>Impact pour une entreprise</dt><dd>La première action est un inventaire du parc : quels postes sont compatibles Windows 11, lesquels ne le sont pas, et quelles applications métier risquent de ne pas suivre. Le coût de l'ESU se chiffre ensuite poste par poste et année par année, en tenant compte du doublement du tarif et du caractère cumulatif, puis se compare au coût du renouvellement du matériel. Pour un parc significatif, l'ESU dépasse rapidement le prix d'un poste neuf sur trois ans.</dd></div>
+          <div class="fiche-row"><dt>Impact sur mon futur métier</dt><dd>Un technicien support ou systèmes recruté aujourd'hui va passer une partie de son temps sur ces migrations : inventaire, test de compatibilité, déploiement, reprise des profils utilisateurs et accompagnement des utilisateurs qui changent d'interface. Savoir mener cet inventaire et chiffrer les deux scénarios est une compétence directement monnayable, surtout chez les prestataires qui accompagnent les PME.</dd></div>
+          <div class="fiche-row"><dt>Expérimentation réalisée</dt><dd class="todo">À réaliser et à décrire : sur une VM VirtualBox, installer Windows 10 22H2, vérifier la compatibilité Windows 11 avec l'outil de contrôle d'intégrité du PC, puis effectuer la mise à niveau et contrôler ce qui est conservé (comptes locaux, applications, données) et ce qui ne l'est pas.</dd></div>
+          <div class="fiche-row"><dt>Compétence(s) concernée(s)</dt><dd>C1 : inventaire du parc, des versions de système et des licences. C4 : conduite d'une migration par lots. C5 : remise en service des postes et accompagnement des utilisateurs. C6 : veille et autoformation.</dd></div>
+          <div class="fiche-row"><dt>Mon analyse personnelle</dt><dd class="todo">À compléter avec mon propre avis. Piste : l'ESU n'a de sens que comme sursis pour les postes qui font tourner une application métier non compatible, le temps de la faire évoluer. Le payer sur l'ensemble d'un parc revient à repousser le problème en le rendant plus cher chaque année.</dd></div>
+        </dl>
+
+        <h5 class="src-title">Sources consultées</h5>
+        <ul class="src-list">
+          <li><a href="https://www.microsoft.com/fr-fr/windows/end-of-support" target="_blank" rel="noopener">Microsoft — Fin du support de Windows 10 (dates, conditions et contenu de l'ESU grand public)</a></li>
+          <li><a href="https://learn.microsoft.com/fr-fr/windows/whats-new/extended-security-updates" target="_blank" rel="noopener">Microsoft Learn — Programme ESU pour Windows 10 (durée, tarif et règles pour les organisations)</a></li>
+          <li><a href="https://www.clubic.com/actualite-602752-fin-de-support-de-windows-10-l-adoption-de-windows-11-s-emballe-et-passe-de-50-a-72-57-en-deux-mois.html" target="_blank" rel="noopener">Clubic — Adoption de Windows 11 selon StatCounter, et réserves sur la fiabilité de la mesure</a></li>
+        </ul>
+      </div>
+      <p class="fiche-note">Les deux fiches attendues par cycle (séance 7 du programme) sont présentes. D'autres seront ajoutées au fil de l'année.</p>
     </div>
   </section>
 
