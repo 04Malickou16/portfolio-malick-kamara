@@ -22,7 +22,9 @@ index.html                                  → toute la page, organisée selon 
 style.css                                   → styles
 script.js                                   → menu mobile, année du footer, bouton retour en haut
 cv-malick-kamara.pdf                        → CV (lien "Télécharger mon CV")
-documentation-installation-serveur-web.pdf  → documentation liée à la fiche de réalisation n°1
+rapport-de-stage-malick-kamara.pdf          → rapport de stage, 16 pages
+document-technique-infrastructure.pdf       → procédures détaillées, 91 pages
+documentation-installation-serveur-web.pdf  → procédure liée à la fiche de réalisation n°2
 photo-profil.jpg                            → photo de la section Profil
 ```
 
@@ -35,12 +37,12 @@ modifiable directement depuis l'interface web de GitHub, sans avoir à naviguer 
 |---|---|
 | Profil | Complet |
 | Compétences | Complet (6 compétences du Bloc 1, tableau de couverture, compétences techniques) |
-| Réalisations | 3 fiches : serveur web Apache2, domaine Active Directory, réseau Cisco multi-sites |
+| Réalisations | 4 fiches : infrastructure réseau sécurisée (stage), serveur web Apache2, domaine Active Directory, réseau Cisco multi-sites |
 | Veille technologique | 2 fiches : licences VMware / migration Proxmox, fin du support de Windows 10 |
-| Stage | Complet : La Bureautique, 26 mai — 25 juin 2026 (pfSense, Active Directory, Zabbix) |
+| Stage | Complet : La Bureautique, 25 mai — 26 juin 2026, avec rapport et document technique en téléchargement |
 | Formation | Complet |
 | Projets | 3 missions ESN : Active Directory, réseau Cisco, serveur DNS/DHCP |
-| Documentation | 1 document : installation d'un serveur web |
+| Documentation | 3 documents : rapport de stage, document technique, installation d'un serveur web |
 | Projet professionnel | Complet |
 | Contact | Email, téléphone, GitHub |
 
@@ -54,19 +56,21 @@ en ligne de l'organisation) ne l'est pas encore.
 Ces champs apparaissent en italique sur le site, avec la mention « À compléter ». Ils portent sur
 du vécu personnel, qui ne peut pas être écrit à sa place : le jury interroge précisément là-dessus.
 
-- **Fiches de réalisation n°2 et n°3** : date de la période, difficulté réellement rencontrée, bilan personnel.
+- **Fiches de réalisation n°3 et n°4** : date de la période, difficulté réellement rencontrée, bilan personnel.
+  La fiche n°1 (stage) et la fiche n°2 (serveur web) sont complètes.
 - **Fiche de veille n°2** : l'expérimentation (le protocole est décrit, il reste à la faire) et l'analyse personnelle.
-- **Documentation de la réalisation n°2** : la procédure de déploiement Active Directory reste à produire.
+- **Documentation de la réalisation n°3** : la procédure de déploiement Active Directory reste à produire.
 
-Les fiches n°2 et n°3 ont été rédigées à partir des missions ESN décrites dans la section Projets.
+Les fiches n°3 et n°4 ont été rédigées à partir des missions ESN décrites dans la section Projets.
 Le contenu technique correspond à ces missions, mais **Malick doit les relire** et corriger ce qui
 ne correspondrait pas à ce qu'il a réellement fait.
 
 ### Autres points
 
-- **Documentation du serveur web** : le PDF présent dans ce dépôt est une procédure reconstituée à
-  partir de la fiche de réalisation n°1. Le document original de Malick est resté sur le Wix :
-  **le récupérer avant de supprimer le site** et remplacer le fichier.
+- **Documentation du serveur web** : le PDF `documentation-installation-serveur-web.pdf` est une
+  procédure reconstituée à partir de la fiche de réalisation n°2. Le document original de Malick
+  est resté sur le Wix : **le récupérer avant de supprimer le site** et remplacer le fichier.
+  C'est le seul document du dépôt que Malick n'a pas écrit lui-même.
 - **LinkedIn** : le bouton a été retiré, le lien du Wix pointait vers l'accueil de LinkedIn et non
   vers un profil. À remettre avec la vraie URL.
 - **Projets** : ajouter les liens vers les dépôts GitHub de chaque mission, si elles sont versionnées.
@@ -76,15 +80,19 @@ ne correspondrait pas à ce qu'il a réellement fait.
   republié sur le compte GitHub de Malick.
 - **Barres de progression** (section Compétences) : les pourcentages sont des estimations, à ajuster
   ou à retirer.
-- **Cohérence CV / site** : les dates de formation et de stage diffèrent entre le CV et le site.
 
-### Écarts à trancher entre le CV et le site
+### Corrections apportées d'après le rapport de stage
 
-| Information | Sur le site | Sur le CV |
+Le rapport de stage et le document technique ont permis de corriger des informations fausses sur
+le site :
+
+| Information | Avant | Corrigé en |
 |---|---|---|
 | Dates du stage | 26 mai — 25 juin 2026 | 25 mai — 26 juin 2026 |
 | BTS SIO | 2024 — 2026 | 2025 — 2027 |
-| Baccalauréat | 2020 — 2024 | 2024 |
+
+Il reste un écart sur le CV : le nom du tuteur y est écrit « Nordie Mhamadi », alors que le
+rapport de stage indique « Nordine Mhamadi ».
 
 ## Ajouter une fiche
 

@@ -161,10 +161,10 @@
             <tr><th>Réalisation</th><th>C1</th><th>C2</th><th>C3</th><th>C4</th><th>C5</th><th>C6</th></tr>
           </thead>
           <tbody>
-            <tr><td>Réalisation 1 — Mise en place d'un serveur web</td><td>☑</td><td>☐</td><td>☐</td><td>☑</td><td>☐</td><td>☐</td></tr>
-            <tr><td>Réalisation 2 — Déploiement d'un domaine Active Directory</td><td>☑</td><td>☑</td><td>☐</td><td>☑</td><td>☑</td><td>☐</td></tr>
-            <tr><td>Réalisation 3 — Déploiement d'un réseau Cisco multi-sites</td><td>☑</td><td>☐</td><td>☐</td><td>☑</td><td>☑</td><td>☐</td></tr>
-            <tr><td>Stage — pfSense, Active Directory et supervision Zabbix</td><td>☑</td><td>☑</td><td>☐</td><td>☑</td><td>☑</td><td>☐</td></tr>
+            <tr><td>Réalisation 1 — Infrastructure réseau sécurisée (stage)</td><td>☑</td><td>☑</td><td>☐</td><td>☑</td><td>☑</td><td>☐</td></tr>
+            <tr><td>Réalisation 2 — Mise en place d'un serveur web</td><td>☑</td><td>☐</td><td>☐</td><td>☑</td><td>☐</td><td>☐</td></tr>
+            <tr><td>Réalisation 3 — Déploiement d'un domaine Active Directory</td><td>☑</td><td>☑</td><td>☐</td><td>☑</td><td>☑</td><td>☐</td></tr>
+            <tr><td>Réalisation 4 — Déploiement d'un réseau Cisco multi-sites</td><td>☑</td><td>☐</td><td>☐</td><td>☑</td><td>☑</td><td>☐</td></tr>
             <tr><td>Veille technologique — 2 fiches</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>☐</td><td>☑</td></tr>
           </tbody>
         </table>
@@ -186,13 +186,23 @@
             <li>Adressage IPv4 et IPv6, sous-réseaux</li>
             <li>Équipements Cisco : routeurs, commutateurs, VLAN</li>
             <li>Routage dynamique RIP et OSPF</li>
-            <li>Pare-feu et séparation LAN / WAN</li>
+            <li>Pare-feu pfSense : règles de filtrage, DHCP, DNS Resolver</li>
+            <li>Segmentation par VLAN</li>
+            <li>Séparation LAN / WAN</li>
           </ul>
         </div>
         <div class="skill-block">
           <h3>⚙️ Virtualisation</h3>
           <ul class="tag-list">
             <li>VirtualBox, réseaux virtuels, gestion des instantanés</li>
+          </ul>
+        </div>
+        <div class="skill-block">
+          <h3>📊 Supervision</h3>
+          <ul class="tag-list">
+            <li>Zabbix : serveur, agents et supervision SNMP</li>
+            <li>Tableaux de bord et déclencheurs</li>
+            <li>Alertes par e-mail</li>
           </ul>
         </div>
         <div class="skill-block">
@@ -244,7 +254,42 @@
       </p>
 
       <div class="fiche-card">
-        <h4>Fiche de réalisation n°1 — <em>Mise en place d'un serveur web</em></h4>
+        <h4>Fiche de réalisation n°1 — <em>Infrastructure réseau sécurisée : pare-feu, annuaire et supervision</em></h4>
+        <dl class="fiche-fields">
+          <div class="fiche-row"><dt>Date / période</dt><dd>Du 25 mai au 26 juin 2026, pendant mon stage de 1ʳᵉ année</dd></div>
+          <div class="fiche-row"><dt>Contexte de l'organisation</dt><dd>Service informatique de La Bureautique, société de services spécialisée dans la vente et la location de matériel bureautique, informatique et de téléphonie. Le service après-vente s'organise autour d'une hotline, avec une prise en charge à distance privilégiée avant toute intervention sur site.</dd></div>
+          <div class="fiche-row"><dt>Besoin / problématique</dt><dd>Reproduire, en environnement de laboratoire, une infrastructure équivalente à celle d'une petite entreprise, afin d'en maîtriser les trois composantes essentielles : la sécurisation du réseau, la gestion centralisée des utilisateurs et la supervision des services. Le travail devait se faire hors du réseau de production, pour éviter tout risque d'interruption de service pour les clients.</dd></div>
+          <div class="fiche-row"><dt>Objectif</dt><dd>Obtenir une infrastructure permettant l'authentification sur le domaine lb.local, la communication entre les machines, l'utilisation des services Active Directory, la supervision de l'ensemble et le filtrage du trafic par le pare-feu.</dd></div>
+          <div class="fiche-row"><dt>Environnement technique</dt><dd>VirtualBox, quatre machines virtuelles sur un réseau interne : pfsense01 en 10.10.10.1, SRV-DC02 en 10.10.10.3, UBUNTU01 en 10.10.10.10 et PC-CLIENT02 en 10.10.10.11. Second réseau 10.10.20.0/24 sous forme de VLAN avec le tag 10.</dd></div>
+          <div class="fiche-row"><dt>Technologies / versions</dt><dd>pfSense 2.7.2 sous FreeBSD · Windows Server 2022 avec le rôle AD DS · Ubuntu Server 24.04 · Zabbix 7.0 et Zabbix Agent 2 · MySQL · SNMP · Windows 11</dd></div>
+          <div class="fiche-row"><dt>Travail personnel réalisé</dt><dd>
+            <ol class="ticket-list">
+              <li><strong>pfSense, 40 % du projet</strong><br>Affectation des interfaces WAN et LAN, adressage statique de la passerelle, service DHCP, DNS Resolver et Host Override, huit règles de filtrage sur le LAN et trois sur le WAN, puis segmentation par VLAN avec sa propre passerelle et son propre DHCP.</li>
+              <li><strong>Windows Server 2022 et Active Directory, 30 % du projet</strong><br>Promotion en contrôleur de domaine, création du domaine lb.local, une unité d'organisation par service avec utilisateurs et groupe de sécurité, trois dossiers partagés aux permissions NTFS différenciées, stratégies de groupe de mot de passe et de verrouillage, mappage d'un lecteur réseau et jonction du poste client au domaine.</li>
+              <li><strong>Supervision Zabbix, 30 % du projet</strong><br>Installation du serveur avec sa base MySQL dédiée, supervision des postes Windows par agent et de pfSense en SNMP, tableau de bord à trois widgets et chaîne d'alerte par e-mail.</li>
+            </ol>
+          </dd></div>
+          <div class="fiche-row"><dt>Difficulté principale</dt><dd>Ma principale erreur n'a pas été technique : j'ai cherché à exposer l'interface web de pfSense en HTTPS via HAProxy et Let's Encrypt, avec un nom de domaine dynamique, alors que cela ne m'était pas demandé. Cette configuration a été la difficulté la plus persistante, avec des erreurs 503 récurrentes malgré une configuration conforme côté back-end. Une erreur de manipulation au cours de ce dépannage a entraîné un verrouillage total de l'accès à l'interface web, qui a nécessité une intervention par la console VirtualBox.</dd></div>
+          <div class="fiche-row"><dt>Diagnostic / raisonnement</dt><dd>
+            <p>Ces difficultés m'ont conduit à adopter une méthodologie de test séquentielle : ne modifier qu'un seul paramètre à la fois plutôt que d'appliquer plusieurs correctifs simultanément, afin d'isoler l'origine des dysfonctionnements. Les stratégies de groupe ont de la même manière été testées sur un poste unique avant d'être appliquées plus largement.</p>
+            <p>Exemple sur l'échec d'envoi des alertes : la résolution DNS fonctionnait et le ping aboutissait, mais la connexion au port 587 échouait, avec un délai d'attente correspondant exactement à un blocage par le pare-feu. Le symptôme désignait donc la règle de filtrage, et non la configuration SMTP.</p>
+          </dd></div>
+          <div class="fiche-row"><dt>Solution mise en œuvre</dt><dd>Pour l'alerte e-mail, ajout d'une règle dédiée au port 587 placée avant la règle de blocage, plutôt qu'une réactivation générale qui aurait annulé le travail de restriction. Pour la résolution de noms intermittente, activation de l'option Query Forwarding sur le DNS Resolver. Pour les flux légitimes bloqués, repositionnement des règles de blocage après les règles d'autorisation. Pour l'adresse IP statique non enregistrée sous Windows Server, configuration par ncpa.cpl. Pour les dossiers partagés accessibles aux autres services, désactivation de l'héritage et permissions NTFS propres au dossier.</dd></div>
+          <div class="fiche-row"><dt>Tests réalisés</dt><dd>Quatre commandes depuis le poste client : ping vers 10.10.10.1 pour la connexion au pare-feu, ping vers google.com pour l'accès à Internet, nslookup pour la résolution des noms et ping vers 10.10.10.3 pour la communication interne. Ces tests ont révélé deux adresses IP erronées saisies lors de la configuration initiale, consignées au moment du diagnostic avant correction. Côté supervision, test d'envoi d'alerte depuis Zabbix, relancé après l'ouverture du port 587 et abouti.</dd></div>
+          <div class="fiche-row"><dt>Résultats obtenus</dt><dd>Domaine lb.local opérationnel, poste client joint au domaine avec stratégies de groupe appliquées, partages sécurisés par groupe, filtrage du trafic effectif et supervision multi-hôtes avec alertes par e-mail fonctionnelles. La mise en place du reverse proxy HAProxy n'a pas abouti dans le temps imparti.</dd></div>
+          <div class="fiche-row"><dt>Documentation produite</dt><dd>Un rapport de stage de 16 pages et un document technique de 91 pages réunissant les procédures détaillées des trois parties, les captures prises au moment de la manipulation, une fiche de dépannage des incidents rencontrés et un glossaire. Les deux sont disponibles dans la section <a href="#documentation">Documentation</a>.</dd></div>
+          <div class="fiche-row"><dt>Compétences mobilisées</dt><dd>C1 — Gérer le patrimoine informatique · C2 — Répondre aux incidents et aux demandes d'assistance · C4 — Travailler en mode projet · C5 — Mettre à disposition des utilisateurs un service informatique</dd></div>
+          <div class="fiche-row"><dt>Bilan</dt><dd>Ce projet a renforcé ma compréhension des interactions entre les briques d'une infrastructure : une configuration DNS mal chaînée peut avoir des répercussions sur l'ensemble des services qui en dépendent. J'en retiens aussi qu'il faut valider le périmètre d'une tâche auprès de son tuteur avant de s'engager dans une configuration complexe, et disposer d'un accès de secours avant toute manipulation à risque. Sur le plan méthodologique, je retiens la nécessité de documenter chaque étape de manière à garantir la reproductibilité du projet.</dd></div>
+        </dl>
+
+        <div class="doc-actions">
+          <a href="rapport-de-stage-malick-kamara.pdf" class="btn btn-primary" target="_blank" rel="noopener">Rapport de stage (PDF)</a>
+          <a href="document-technique-infrastructure.pdf" class="btn btn-outline" target="_blank" rel="noopener">Document technique (PDF)</a>
+        </div>
+      </div>
+
+      <div class="fiche-card">
+        <h4>Fiche de réalisation n°2 — <em>Mise en place d'un serveur web</em></h4>
         <dl class="fiche-fields">
           <div class="fiche-row"><dt>Date / période</dt><dd>17 septembre au 24 septembre</dd></div>
           <div class="fiche-row"><dt>Contexte de l'organisation</dt><dd>Création d'un serveur web dans l'optique de l'intégrer à d'autres projets, telle que la mise en place d'un service Zabbix chargé de le surveiller.</dd></div>
@@ -258,14 +303,14 @@
           <div class="fiche-row"><dt>Solution mise en œuvre</dt><dd>Tout recommencer depuis le départ et réinstaller VirtualBox.</dd></div>
           <div class="fiche-row"><dt>Tests réalisés</dt><dd>Création d'une page de test (<code>index.html</code>) servant de page d'accueil pour le domaine.</dd></div>
           <div class="fiche-row"><dt>Résultats obtenus</dt><dd>Serveur web opérationnel.</dd></div>
-          <div class="fiche-row"><dt>Documentation produite</dt><dd>Voir la section <a href="#documentation">Documentation</a>, sous le nom « Installation serveur web ».</dd></div>
+          <div class="fiche-row"><dt>Documentation produite</dt><dd>Procédure d'installation disponible dans la section <a href="#documentation">Documentation</a>.</dd></div>
           <div class="fiche-row"><dt>Compétences mobilisées</dt><dd>C1 — Gérer le patrimoine informatique · C4 — Travailler en mode projet</dd></div>
           <div class="fiche-row"><dt>Bilan</dt><dd>J'ai appris à mettre en place un serveur web sur une VM, et qu'il faut parfois repartir du début pour résoudre un problème rencontré. Je réaliserai une documentation plus adaptée : plus claire, avec plus de précision et davantage de tickets ou d'étapes.</dd></div>
         </dl>
       </div>
 
       <div class="fiche-card">
-        <h4>Fiche de réalisation n°2 — <em>Déploiement d'un domaine Active Directory</em></h4>
+        <h4>Fiche de réalisation n°3 — <em>Déploiement d'un domaine Active Directory</em></h4>
         <dl class="fiche-fields">
           <div class="fiche-row"><dt>Date / période</dt><dd class="todo">À compléter</dd></div>
           <div class="fiche-row"><dt>Contexte de l'organisation</dt><dd>Mise en situation professionnelle : technicien systèmes au sein de l'ESN Mediasys Solutions. Le client, le Groupe Altéa, ouvre une nouvelle agence et demande une infrastructure fiable, sécurisée et évolutive. Intervention à distance sur un serveur vierge, avec des contraintes de temps et des demandes transmises sous forme de tickets.</dd></div>
@@ -295,7 +340,7 @@
       </div>
 
       <div class="fiche-card">
-        <h4>Fiche de réalisation n°3 — <em>Déploiement d'un réseau Cisco multi-sites</em></h4>
+        <h4>Fiche de réalisation n°4 — <em>Déploiement d'un réseau Cisco multi-sites</em></h4>
         <dl class="fiche-fields">
           <div class="fiche-row"><dt>Date / période</dt><dd class="todo">À compléter</dd></div>
           <div class="fiche-row"><dt>Contexte de l'organisation</dt><dd>Mise en situation professionnelle : responsable réseau d'une ESN, en charge du réseau de l'entreprise Factory13.</dd></div>
@@ -444,20 +489,50 @@
 
       <h3 class="subheading">Stage de 1ʳᵉ année de BTS SIO SISR</h3>
       <div class="fiche-card">
+        <h4>Conception, déploiement et supervision d'une infrastructure réseau sécurisée</h4>
         <dl class="fiche-fields">
-          <div class="fiche-row"><dt>Entreprise</dt><dd>La Bureautique</dd></div>
-          <div class="fiche-row"><dt>Période</dt><dd>26 mai — 25 juin 2026</dd></div>
-          <div class="fiche-row"><dt>Contexte</dt><dd>Assistance et support informatique</dd></div>
+          <div class="fiche-row"><dt>Entreprise</dt><dd>La Bureautique — 47, route des Camoins, 13011 Marseille</dd></div>
+          <div class="fiche-row"><dt>Période</dt><dd>Du 25 mai au 26 juin 2026</dd></div>
+          <div class="fiche-row"><dt>Tuteur en entreprise</dt><dd>Nordine Mhamadi</dd></div>
+          <div class="fiche-row"><dt>Service d'accueil</dt><dd>Service informatique. La Bureautique est une société de services spécialisée dans la vente et la location de matériel bureautique, informatique et de téléphonie, appuyée par des techniciens qualifiés sur les solutions d'impression, de numérisation et d'archivage.</dd></div>
+          <div class="fiche-row"><dt>Infrastructure de l'entreprise</dt><dd>
+            <p>Réseau centralisé autour d'une baie informatique :</p>
+            <ul class="tag-list small">
+              <li>Pare-feu et routeur Stormshield SN160</li>
+              <li>Commutateurs Dahua PoE 16 et 24 ports</li>
+              <li>NAS Synology DS918+ et DS220j</li>
+              <li>Fibre professionnelle Jaguar Network</li>
+              <li>Lien WAN de secours 5G</li>
+              <li>Trois mini-PC HP dont le serveur Active Directory</li>
+            </ul>
+          </dd></div>
+          <div class="fiche-row"><dt>Projet confié</dt><dd>Concevoir, déployer et superviser une infrastructure réseau complète, représentative de celle d'une petite entreprise. Le projet a été mené en environnement virtualisé sous VirtualBox, et non sur le réseau de production, afin de pouvoir expérimenter sans risque d'interruption de service pour les clients.</dd></div>
+          <div class="fiche-row"><dt>Architecture déployée</dt><dd>
+            <p>Quatre machines virtuelles sur un réseau interne, domaine <strong>lb.local</strong> :</p>
+            <ul class="tag-list small">
+              <li>10.10.10.1 — pfsense01, pare-feu, routeur et passerelle</li>
+              <li>10.10.10.3 — SRV-DC02, contrôleur de domaine et DNS interne</li>
+              <li>10.10.10.10 — UBUNTU01, serveur de supervision Zabbix</li>
+              <li>10.10.10.11 — PC-CLIENT02, poste Windows 11 joint au domaine</li>
+            </ul>
+            <p>Un second réseau 10.10.20.0/24 a été ajouté sous forme de VLAN avec le tag 10, afin d'isoler certains flux.</p>
+          </dd></div>
           <div class="fiche-row"><dt>Activités réalisées</dt><dd>
-            <p>Mise en place d'un réseau avec des machines virtuelles sur VirtualBox :</p>
             <ol class="ticket-list">
-              <li><strong>Partie 1 — pfSense (40 %)</strong><br>Création d'un pare-feu avec des règles de filtrage.</li>
-              <li><strong>Partie 2 — Windows Server et Active Directory (30 %)</strong><br>Mise en place d'un domaine Active Directory.</li>
-              <li><strong>Partie 3 — Supervision (30 %)</strong><br>Mise en place de l'outil de supervision Zabbix, pour la surveillance du parc et l'envoi d'un message d'alerte en cas de problème.</li>
+              <li><strong>Partie 1 — Pare-feu et routage avec pfSense (40 %)</strong><br>Installation sous FreeBSD avec interfaces WAN et LAN, service DHCP sur la plage 10.10.10.100 à 10.10.10.200, DNS Resolver et Host Override, huit règles de filtrage sur le LAN et trois sur le WAN, puis segmentation par VLAN avec sa propre passerelle et son propre DHCP.</li>
+              <li><strong>Partie 2 — Windows Server 2022 et Active Directory (30 %)</strong><br>Promotion du serveur en contrôleur de domaine, création du domaine lb.local, une unité d'organisation par service avec ses utilisateurs et son groupe de sécurité, trois dossiers partagés avec permissions NTFS différenciées et héritage désactivé, stratégies de groupe de mot de passe et de verrouillage, mappage d'un lecteur réseau N: et jonction du poste client au domaine.</li>
+              <li><strong>Partie 3 — Supervision avec Zabbix (30 %)</strong><br>Installation de Zabbix 7.0 sur Ubuntu Server 24.04 avec base MySQL dédiée, supervision des postes Windows par Zabbix Agent 2 et de pfSense en SNMP, tableau de bord à trois widgets, et chaîne d'alerte par e-mail via SMTP.</li>
             </ol>
           </dd></div>
-          <div class="fiche-row"><dt>Bilan</dt><dd>Ce projet m'a permis de mettre en œuvre une infrastructure informatique complète et cohérente, structurée en trois volets complémentaires : sécurisation et routage réseau (pfSense), gestion centralisée des identités et des ressources (Active Directory sous Windows Server 2022), et supervision de l'ensemble du parc (Zabbix). Les objectifs pédagogiques ont été atteints pour l'essentiel : le contrôleur de domaine, les stratégies de groupe, les partages sécurisés, ainsi que la supervision multi-hôtes avec alertes par e-mail sont pleinement opérationnels.</dd></div>
+          <div class="fiche-row"><dt>Bilan</dt><dd>Ce projet m'a permis de mettre en œuvre une infrastructure informatique complète et cohérente, structurée en trois volets complémentaires : la sécurisation et le routage réseau avec pfSense, la gestion centralisée des identités et des ressources avec Active Directory sous Windows Server 2022, et la supervision du parc avec Zabbix. Les objectifs ont été atteints pour l'essentiel : le contrôleur de domaine, les stratégies de groupe, les partages sécurisés et la supervision multi-hôtes avec alertes par e-mail sont pleinement opérationnels. La mise en place du reverse proxy HAProxy, en revanche, n'a pas abouti dans le temps imparti.</dd></div>
+          <div class="fiche-row"><dt>Enseignements</dt><dd>Ce projet a renforcé ma compréhension des interactions entre les briques d'une infrastructure : une configuration DNS mal chaînée peut avoir des répercussions sur l'ensemble des services qui en dépendent. J'ai appris l'importance d'une méthodologie de dépannage rigoureuse et séquentielle, ainsi que la nécessité de vérifier systématiquement les valeurs par défaut proposées par les outils d'administration, qui sont une source fréquente d'erreurs silencieuses. Sur le plan professionnel, les missions doivent être réalisées dans un temps donné et avec un niveau d'exigence élevé, ce qui m'a obligé à m'organiser différemment et à rechercher constamment les informations nécessaires.</dd></div>
+          <div class="fiche-row"><dt>Pistes pour l'avenir</dt><dd>Passer la supervision de pfSense en SNMPv3 pour ajouter le chiffrement et l'authentification · automatiser la sauvegarde de la configuration de pfSense et de l'annuaire Active Directory · reprendre proprement la configuration de HAProxy · étendre la supervision à des déclencheurs plus fins, comme l'espace disque ou les services critiques du contrôleur de domaine.</dd></div>
         </dl>
+
+        <div class="doc-actions">
+          <a href="rapport-de-stage-malick-kamara.pdf" class="btn btn-primary" target="_blank" rel="noopener">Rapport de stage (PDF)</a>
+          <a href="document-technique-infrastructure.pdf" class="btn btn-outline" target="_blank" rel="noopener">Document technique (PDF)</a>
+        </div>
       </div>
 
       <h3 class="subheading">Expérience complémentaire</h3>
@@ -479,7 +554,7 @@
       <h2 class="section-title"><span class="num">06</span> Formation</h2>
       <div class="timeline">
         <div class="timeline-item">
-          <div class="timeline-date">2024 — 2026</div>
+          <div class="timeline-date">2025 — 2027</div>
           <div class="timeline-content">
             <h3>BTS SIO — Option SISR</h3>
             <p>Lycée Marie Curie, Marseille. Administration systèmes, réseaux et cybersécurité.</p>
@@ -625,13 +700,29 @@
       <p class="section-intro">
         Cette section réunit les procédures, guides et ressources produits pendant la formation
         (procédures d'installation, schémas réseau, guides utilisateurs, comptes rendus
-        d'intervention...), en lien avec les réalisations de la section précédente.
+        d'intervention...), en lien avec les réalisations de la section précédente. Les captures
+        d'écran du document technique sont celles prises au moment de la manipulation, y compris
+        celles correspondant à des erreurs : elles n'ont pas été refaites après coup.
       </p>
       <div class="doc-list">
         <article class="doc-item">
           <div class="doc-meta">
+            <h4>Rapport de stage — Infrastructure réseau sécurisée</h4>
+            <p>16 pages. Présentation de La Bureautique et de son infrastructure, contexte et objectifs du projet, réalisation des trois parties (pfSense, Active Directory, Zabbix), difficultés rencontrées, compétences mobilisées et glossaire technique. Lié à la <a href="#realisations">fiche de réalisation n°1</a>.</p>
+          </div>
+          <a href="rapport-de-stage-malick-kamara.pdf" class="btn btn-outline" target="_blank" rel="noopener">Télécharger le PDF</a>
+        </article>
+        <article class="doc-item">
+          <div class="doc-meta">
+            <h4>Document technique — Procédures détaillées de mise en œuvre</h4>
+            <p>91 pages. Procédures reproductibles des trois parties de l'infrastructure, captures prises au moment de la manipulation, fiche de dépannage des incidents rencontrés et glossaire. Document d'accompagnement du rapport de stage, pensé pour qu'un tiers puisse refaire l'infrastructure de bout en bout.</p>
+          </div>
+          <a href="document-technique-infrastructure.pdf" class="btn btn-outline" target="_blank" rel="noopener">Télécharger le PDF</a>
+        </article>
+        <article class="doc-item">
+          <div class="doc-meta">
             <h4>Installation d'un serveur web</h4>
-            <p>Procédure d'installation d'un serveur web Apache2 sur une VM Ubuntu 22.04 sous VirtualBox. Document lié à la <a href="#realisations">fiche de réalisation n°1</a>.</p>
+            <p>Procédure d'installation d'un serveur web Apache2 sur une VM Ubuntu 22.04 sous VirtualBox. Document lié à la <a href="#realisations">fiche de réalisation n°2</a>.</p>
           </div>
           <a href="documentation-installation-serveur-web.pdf" class="btn btn-outline" target="_blank" rel="noopener">Télécharger le PDF</a>
         </article>
