@@ -76,8 +76,7 @@ ne correspondrait pas à ce qu'il a réellement fait.
 - **Projets** : ajouter les liens vers les dépôts GitHub de chaque mission, si elles sont versionnées.
 - **CV** : la ligne « Portfolio : [adresse du site Wix] » du PDF doit être remplacée par l'adresse
   GitHub Pages de ce site.
-- **Dépôt Git** (section Profil) : le lien pointe vers ce dépôt. À mettre à jour si le site est
-  republié sur le compte GitHub de Malick.
+
 - **Barres de progression** (section Compétences) : les pourcentages sont des estimations, à ajuster
   ou à retirer.
 
@@ -116,3 +115,5 @@ puis `http://localhost:8000`.
 ## Déploiement
 
 GitHub Pages, branche `main`, dossier `/ (root)` — `Settings` → `Pages`.
+
+Site en ligne : https://04malickou16.github.io/portfolio-malick-kamara/
